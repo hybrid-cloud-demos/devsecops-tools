@@ -1,0 +1,11 @@
+FROM image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+
+USER root
+
+#Install roxctl
+RUN  wget -O /usr/bin/roxctl https://mirror.openshift.com/pub/rhacs/assets/latest/bin/linux/roxctl \
+     && chmod +x /usr/bin/roxctl
+
+USER 1001
+
+CMD ["/usr/bin/roxctl"]
