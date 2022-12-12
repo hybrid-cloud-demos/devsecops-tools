@@ -1,0 +1,12 @@
+FROM image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+
+ENV GHCLI_VER=2.20.2
+
+USER root
+
+#Install github cli (gh)
+RUN rpm -ivh https://github.com/cli/cli/releases/download/v${GHCLI_VER}/gh_${GHCLI_VER}_linux_amd64.rpm 
+
+USER 1001
+
+CMD ["/usr/bin/gh"]
